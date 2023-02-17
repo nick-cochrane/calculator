@@ -4,9 +4,60 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <title>Cool Cat Calculator</title>
 </head>
 <body>
+    <header>Cool Cat Calculator</header>
+    <div class="content">
+        <div class = "gif-container">
+            <h1>Crush those keys...</h1>
+            <iframe src="https://giphy.com/embed/GeimqsH0TLDt4tScGw" width="700" height="400" frameBorder="0" class="giphy-embed"></iframe>
+            <a href="https://giphy.com/gifs/vibes-vibing-vibin-GeimqsH0TLDt4tScGw">via GIPHY</a>
+            <div id="audio-container">
+                <audio src="lifelike-126735.mp3" controls></audio>
+                <p id="music-credit">Music by AlexiAction from Pixabay</p>
+            </div>
+        </div>
+        <div class = "calculator-container">
+            <div id="calc-screen"></div>
+            <div id="big-buttons-section">
+                <button class="big-button" id="clear-button">Clear</button>
+                <button class="big-button" id="delete-button">Delete</button>
+            </div>
+            <div id="small-buttons-section">
+                <div class="small-button-row">
+                    <button class="small-button">7</button>
+                    <button class="small-button">8</button>
+                    <button class="small-button">9</button>
+                    <button class="small-button" id="divide">/</button>    
+                </div>
+                <div class="small-button-row">
+                    <button class="small-button">4</button>
+                    <button class="small-button">5</button>
+                    <button class="small-button">6</button>
+                    <button class="small-button" id="multiply">X</button>
+                </div>
+                <div class="small-button-row">
+                    <button class="small-button">1</button>
+                    <button class="small-button">2</button>
+                    <button class="small-button">3</button>
+                    <button class="small-button" id="subtract">-</button>
+                </div>
+                <div class="small-button-row">
+                    <button class="small-button">.</button>
+                    <button class="small-button">0</button>
+                    <button class="small-button">=</button>
+                    <button class="small-button" id="add">+</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <footer>
+        <p>Copyright Rhubarb Labs 2023</p>
+    </footer>
+
     <script src="app.js"></script>
 </body>
 </html>
