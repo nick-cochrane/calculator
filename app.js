@@ -1,33 +1,61 @@
+/* To Fix/ADD
+Functionality for plus/minus button
+% button
+Fix decimal point clearing bug
+*/
+
 const displayPane = document.querySelector('#calc-screen');
 
 let calculatorState = {
-    firstNumber: null,
-    secondNumber: null,
-    operator: ''
+    firstNumber: '',
+    secondNumber: '',
+    operator: '',
+    tempResult: null
 }
 
 const buttons = [...document.querySelectorAll('.number-button')];
 buttons.forEach(button => button.addEventListener("click", numberButtonClick));
 
 function numberButtonClick (e) {
-    currentDisplay = displayPane.textContent;
-    displayPane.textContent = currentDisplay + e.target.textContent;
+    if (calculatorState.operator === '') {
+        currentDisplay = displayPane.textContent;
+        displayPane.textContent = currentDisplay + e.target.textContent;
+        calculatorState.firstNumber = parseFloat(displayPane.textContent);
+        console.log(calculatorState);
+    } else {
+        currentDisplay = calculatorState.secondNumber;
+        displayPane.textContent = currentDisplay + e.target.textContent;
+        calculatorState.secondNumber = parseFloat(displayPane.textContent);
+        console.log(calculatorState);
+    }
 }
 
 const clearButton = document.querySelector('#clear-button');
 clearButton.addEventListener("click", function (e) {
-    displayPane.textContent = null;
+    if (calculatorState.firstNumber === '') {
+        displayPane.textContent = '';
+    } else {
+        calculatorState.secondNumber = '';
+        displayPane.textContent = '';
+    }
 });
 
 const operatorButtons = [...document.querySelectorAll('.operator-button')];
 operatorButtons.forEach(button => button.addEventListener("click", operatorButtonClick));
 
 function operatorButtonClick (e) {
-    calculatorState.firstNumber = parseFloat(displayPane.textContent);
-    displayPane.textContent = null;
-    calculatorState.operator = e.target.id;
-    console.log(calculatorState);
-}
+    if (calculatorState.secondNumber === '') {
+        displayPane.textContent = calculatorState.firstNumber;
+        calculatorState.operator = e.target.id;
+        console.log(calculatorState);
+    } else {
+        result = operate(window[calculatorState.operator], calculatorState.firstNumber, calculatorState.secondNumber);
+        calculatorState.firstNumber = result;
+        calculatorState.secondNumber = '';
+        calculatorState.operator = e.target.id;
+        console.log(calculatorState);
+    }
+};
 
 const equalsButton = document.querySelector('#equals-button');
 equalsButton.addEventListener("click", function (e) {
@@ -35,15 +63,16 @@ equalsButton.addEventListener("click", function (e) {
     result = operate(window[calculatorState.operator], calculatorState.firstNumber, calculatorState.secondNumber);
     displayPane.textContent = result;
     calculatorState.firstNumber = result;
-    calculatorState.secondNumber = null;
+    calculatorState.secondNumber = '';
+    console.log(calculatorState);
 });
 
 const deleteButton = document.querySelector('#delete-button');
 deleteButton.addEventListener("click", function (e) {
     displayPane.textContent = null;
     calculatorState = {
-        firstNumber: null,
-        secondNumber: null,
+        firstNumber: '',
+        secondNumber: '',
         operator: ''
     }
 });
