@@ -1,7 +1,7 @@
 /* To Fix/ADD
 % button
 Limit number of numbers on calc
-Reduce distance between decimal and numbers
+Fix decimal specificty after operator
 */
 
 const displayPane = document.querySelector('#calc-screen');
