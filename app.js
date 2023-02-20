@@ -1,7 +1,7 @@
 /* To Fix/ADD
-Functionality for plus/minus button
 % button
 Fix decimal point clearing bug
+Limit number of numbers on calc screen
 */
 
 const displayPane = document.querySelector('#calc-screen');
@@ -51,6 +51,7 @@ function operatorButtonClick (e) {
     } else {
         result = operate(window[calculatorState.operator], calculatorState.firstNumber, calculatorState.secondNumber);
         calculatorState.firstNumber = result;
+        displayPane.textContent = calculatorState.firstNumber;
         calculatorState.secondNumber = '';
         calculatorState.operator = e.target.id;
         console.log(calculatorState);
@@ -74,6 +75,19 @@ deleteButton.addEventListener("click", function (e) {
         firstNumber: '',
         secondNumber: '',
         operator: ''
+    }
+});
+
+const plusMinusButton = document.querySelector('#plus-minus');
+plusMinusButton.addEventListener("click", function (e) {
+    if (calculatorState.secondNumber === ''){
+        calculatorState.firstNumber = calculatorState.firstNumber * -1;
+        displayPane.textContent = calculatorState.firstNumber;
+        console.log(calculatorState);
+    } else {
+        calculatorState.secondNumber = calculatorState.secondNumber * -1;
+        displayPane.textContent = calculatorState.secondNumber;
+        console.log(calculatorState);
     }
 });
 
