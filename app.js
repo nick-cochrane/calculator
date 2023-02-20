@@ -1,7 +1,7 @@
 /* To Fix/ADD
 % button
-Fix decimal point clearing bug
-Limit number of numbers on calc screen
+Limit number of numbers on calc
+Reduce distance between decimal and numbers
 */
 
 const displayPane = document.querySelector('#calc-screen');
@@ -22,8 +22,14 @@ function numberButtonClick (e) {
         displayPane.textContent = currentDisplay + e.target.textContent;
         calculatorState.firstNumber = parseFloat(displayPane.textContent);
         console.log(calculatorState);
-    } else {
+    } else if (calculatorState.firstNumber != '' && calculatorState.secondNumber == ''){
         currentDisplay = calculatorState.secondNumber;
+        displayPane.textContent = currentDisplay + e.target.textContent;
+        calculatorState.secondNumber = parseFloat(displayPane.textContent);
+        console.log(calculatorState);
+    } else {
+        // currentDisplay = calculatorState.secondNumber;
+        currentDisplay = displayPane.textContent;
         displayPane.textContent = currentDisplay + e.target.textContent;
         calculatorState.secondNumber = parseFloat(displayPane.textContent);
         console.log(calculatorState);
