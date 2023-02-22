@@ -1,6 +1,5 @@
 /* To Fix/ADD
 Add keyboard support
-disable . button if pressed once
 */
 
 const displayPane = document.querySelector('#calc-screen');
@@ -49,7 +48,9 @@ const operatorButtons = [...document.querySelectorAll('.operator-button')];
 operatorButtons.forEach(button => button.addEventListener("click", operatorButtonClick));
 
 function operatorButtonClick (e) {
-    if (calculatorState.secondNumber === '') {
+    if (displayPane.textContent === '.') {
+        return '';
+    } else if (calculatorState.secondNumber === '') {
         displayPane.textContent = calculatorState.firstNumber;
         calculatorState.operator = e.target.id;
         console.log(calculatorState);
@@ -102,7 +103,7 @@ plusMinusButton.addEventListener("click", function (e) {
 
 const percentButton = document.querySelector('#percent-button');
 percentButton.addEventListener("click", function (e) {
-    if (calculatorState.firstNumber === '') {
+    if (calculatorState.firstNumber === '' || displayPane.textContent === '.') {
         return '';
     } else if (calculatorState.firstNumber != '' && calculatorState.secondNumber == ''){
         calculatorState.firstNumber = parseFloat(displayPane.textContent) / 100;
@@ -113,6 +114,24 @@ percentButton.addEventListener("click", function (e) {
         displayPane.textContent = calculatorState.secondNumber;
         console.log(calculatorState);
     }
+});
+
+const decimalButton = document.querySelector('.decimal-button');
+decimalButton.addEventListener("click", function (e) {
+    if (displayPane.textContent.includes('.') === true) {
+        return '';
+    } else if (calculatorState.operator === '') {
+        currentDisplay = displayPane.textContent;
+        displayPane.textContent = currentDisplay + e.target.textContent;
+        calculatorState.firstNumber = parseFloat(displayPane.textContent);
+        console.log(calculatorState);
+    } else {
+        currentDisplay = displayPane.textContent;
+        displayPane.textContent = currentDisplay + e.target.textContent;
+        calculatorState.secondNumber = parseFloat(displayPane.textContent);
+        console.log(calculatorState);
+    }
+    
 });
 
 

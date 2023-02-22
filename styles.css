@@ -96,7 +96,8 @@ audio {
     align-items: center;
 }
 
-.number-button, .operator-button, .function-button, #equals-button {
+.number-button, .operator-button, .decimal-button, 
+.function-button, #equals-button {
     width: 70px;
     height: 55px;
     margin: 5px;
@@ -114,7 +115,8 @@ footer {
     font-size: 18px;
 }
 
-.number-button:active, .operator-button:active, .function-button:active, #equals-button:active{
+.number-button:active, .operator-button:active, .decimal-button:active,
+.function-button:active, #equals-button:active{
     box-shadow: inset -4px -3px -5px;
     background-color: darkgray;
     transition: 1;
