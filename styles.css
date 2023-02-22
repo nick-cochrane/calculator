@@ -116,6 +116,13 @@ audio {
     box-shadow: 4px 3px;
 }
 
+.number-button:active, .operator-button:active, .decimal-button:active,
+.function-button:active, #equals-button:active{
+    box-shadow: inset -4px -3px -5px;
+    background-color: darkgray;
+    transition: 1;
+}
+
 footer {
     display: flex;
     flex-direction: row;
@@ -129,12 +136,5 @@ footer {
 
 footer p {
     margin: 5px;
-}
-
-.number-button:active, .operator-button:active, .decimal-button:active,
-.function-button:active, #equals-button:active{
-    box-shadow: inset -4px -3px -5px;
-    background-color: darkgray;
-    transition: 1;
 }
 
