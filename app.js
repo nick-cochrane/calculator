@@ -1,5 +1,5 @@
 /* To Fix/ADD
-% button
+Add keyboard support
 */
 
 const displayPane = document.querySelector('#calc-screen');
@@ -90,6 +90,23 @@ plusMinusButton.addEventListener("click", function (e) {
         console.log(calculatorState);
     } else {
         calculatorState.secondNumber = calculatorState.secondNumber * -1;
+        displayPane.textContent = calculatorState.secondNumber;
+        console.log(calculatorState);
+    }
+});
+
+const percentButton = document.querySelector('#percent-button');
+percentButton.addEventListener("click", function (e) {
+    if (calculatorState.operator === '') {
+        calculatorState.firstNumber = parseFloat(displayPane.textContent) / 100;
+        displayPane.textContent = calculatorState.firstNumber;
+        console.log(calculatorState);
+    } else if (calculatorState.firstNumber != '' && calculatorState.secondNumber == ''){
+        calculatorState.secondNumber = parseFloat(displayPane.textContent) / 100;
+        displayPane.textContent = calculatorState.secondNumber;
+        console.log(calculatorState);
+    } else {
+        calculatorState.secondNumber = parseFloat(displayPane.textContent) / 100;
         displayPane.textContent = calculatorState.secondNumber;
         console.log(calculatorState);
     }
