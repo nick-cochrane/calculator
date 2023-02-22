@@ -137,7 +137,7 @@ decimalButton.addEventListener("click", function (e) {
 
 
 function add (x, y) {
-    return formatNumber(x + y);
+    return formatNumber(x+y);
 }
 
 function subtract (x, y) {
@@ -158,9 +158,10 @@ function operate (operator, x, y) {
 
 function formatNumber (x) {
     if (x.toString().length > 9) {
-        return parseFloat(x.toExponential(4));
+        return x.toExponential(4);
+        console.log("long")
     } else {
-        return parseFloat(x.toFixed(4));
+        return parseFloat(x.toFixed(5));
     }
 } 
 
