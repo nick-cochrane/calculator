@@ -77,7 +77,7 @@ audio {
     letter-spacing: -3px;
     justify-content: end;
     align-items: center;
-    overflow: scroll;
+    overflow: hidden;
 }
 
 #big-buttons-section {
