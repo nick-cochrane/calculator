@@ -1,5 +1,6 @@
 /* To Fix/ADD
 Add keyboard support
+disable . button if pressed once
 */
 
 const displayPane = document.querySelector('#calc-screen');
@@ -64,12 +65,16 @@ function operatorButtonClick (e) {
 
 const equalsButton = document.querySelector('#equals-button');
 equalsButton.addEventListener("click", function (e) {
-    calculatorState.secondNumber = parseFloat(displayPane.textContent);
-    result = operate(window[calculatorState.operator], calculatorState.firstNumber, calculatorState.secondNumber);
-    displayPane.textContent = result;
-    calculatorState.firstNumber = result;
-    calculatorState.secondNumber = '';
-    console.log(calculatorState);
+    if (calculatorState.secondNumber === '') {
+        // return '';
+    } else {
+        calculatorState.secondNumber = parseFloat(displayPane.textContent);
+        result = operate(window[calculatorState.operator], calculatorState.firstNumber, calculatorState.secondNumber);
+        displayPane.textContent = result;
+        calculatorState.firstNumber = result;
+        calculatorState.secondNumber = '';
+        console.log(calculatorState);
+    }
 });
 
 const deleteButton = document.querySelector('#delete-button');
@@ -136,9 +141,9 @@ function operate (operator, x, y) {
 
 function formatNumber (x) {
     if (x.toString().length > 9) {
-        return x.toExponential(4);
+        return parseFloat(x.toExponential(4));
     } else {
-        return x.toFixed(4);
+        return parseFloat(x.toFixed(4));
     }
 } 
 
