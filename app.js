@@ -102,13 +102,11 @@ plusMinusButton.addEventListener("click", function (e) {
 
 const percentButton = document.querySelector('#percent-button');
 percentButton.addEventListener("click", function (e) {
-    if (calculatorState.operator === '') {
+    if (calculatorState.firstNumber === '') {
+        return '';
+    } else if (calculatorState.firstNumber != '' && calculatorState.secondNumber == ''){
         calculatorState.firstNumber = parseFloat(displayPane.textContent) / 100;
         displayPane.textContent = calculatorState.firstNumber;
-        console.log(calculatorState);
-    } else if (calculatorState.firstNumber != '' && calculatorState.secondNumber == ''){
-        calculatorState.secondNumber = parseFloat(displayPane.textContent) / 100;
-        displayPane.textContent = calculatorState.secondNumber;
         console.log(calculatorState);
     } else {
         calculatorState.secondNumber = parseFloat(displayPane.textContent) / 100;
