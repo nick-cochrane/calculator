@@ -1,7 +1,5 @@
 /* To Fix/ADD
 % button
-Limit number of numbers on calc
-Fix decimal specificty after operator
 */
 
 const displayPane = document.querySelector('#calc-screen');
@@ -100,22 +98,30 @@ plusMinusButton.addEventListener("click", function (e) {
 
 
 function add (x, y) {
-    return x + y;
+    return formatNumber(x + y);
 }
 
 function subtract (x, y) {
-    return x - y;
+    return formatNumber(x - y);
 }
 
 function multiply (x, y) {
-    return x * y;
+    return formatNumber(x * y);
 }
 
 function divide (x, y) {
-    return x / y;
+    return formatNumber(x / y);
 }
 
 function operate (operator, x, y) {
     return operator(x, y);
 }
+
+function formatNumber (x) {
+    if (x.toString().length > 9) {
+        return x.toExponential(4);
+    } else {
+        return x.toFixed(4);
+    }
+} 
 

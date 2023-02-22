@@ -49,7 +49,7 @@ audio {
     width: 400px;
     border: 5px solid black;
     border-radius: 15px;
-    box-shadow: 7px 7px 7px;
+    box-shadow: 7px 7px 12px;
     background-color: #8636f7;
 }
 
@@ -112,5 +112,11 @@ footer {
     flex-shrink: 0;
     justify-content: center;
     font-size: 18px;
+}
+
+.number-button:active, .operator-button:active, .function-button:active, #equals-button:active{
+    box-shadow: inset -4px -3px -5px;
+    background-color: darkgray;
+    transition: 1;
 }
 
